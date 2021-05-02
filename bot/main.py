@@ -2,7 +2,6 @@
 #main
 
 import asyncio, discord
-from simpledice import *
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix="&")

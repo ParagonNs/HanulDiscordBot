@@ -11,8 +11,12 @@ async def on_ready():
 	print("We have loggedd in as {0.user}".format(bot))
 
 @bot.command()
-async def hello(ctx):
-    await ctx.send("hello")
+async def 핑(ctx):
+    await ctx.send("퐁")
+
+@bot.command()
+async def 도움말(ctx):
+    await ctx.send("도움말")
 
 @bot.command()
 async def 주사위(ctx):

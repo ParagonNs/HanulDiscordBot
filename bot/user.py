@@ -7,6 +7,7 @@ u_id = 1 #유저의 id
 u_name = 2 #유저의 이름
 u_credit = 3 #유저의 크레딧
 u_level = 4 #유저의 레벨
+u_aresource = 5#유저가 가진 자원 A
 #Default Data
 default_credit = 100
 default_level = 1

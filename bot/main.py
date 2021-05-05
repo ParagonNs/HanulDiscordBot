@@ -21,7 +21,11 @@ async def 도움말(ctx):
 
 @bot.command()
 async def 회원가입(ctx):
-	signup(ctx.author.name, ctx.author.id)
+    if checkName(ctx.author.name, ctx.author.id):
+        signup(ctx.author.name, ctx.author.id)
+        await ctx.send("회원가입이 완료되었습니다.")
+    else:
+        await ctx.send("이미 가입하셨습니다.")
 
 @bot.command()
 async def 초기화(ctx):

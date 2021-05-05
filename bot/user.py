@@ -45,10 +45,12 @@ def loadFile():
     print("엑셀 파일을 불러옵니다.")
     wb = load_workbook("userDB.xlsx")
     ws = wb.create_sheet("User Data", 0 )
+    
 def saveFile():
     print("엑셀 파일을 저장합니다.")
     wb.save("userDB.xlsx")
     wb.close()
+    
 def checkUserNum():
     print("user.py의 checkUserNum 실행중")
     loadFile()
@@ -59,6 +61,7 @@ def checkUserNum():
         else:
             count = count
     return count
+
 def checkFirstRow():
     print("user.py의 checkFirstRow 실행중")
     loadFile()
@@ -69,6 +72,7 @@ def checkFirstRow():
     _result = ws.max_row+1
     saveFile()
     return _result
+
 def checkUser(_name, _id):
     print("user.py의 checkUser 실핼중")
     print(str(_name) + "<" + str(_id) + ">의 존재 여부 확인")
@@ -95,11 +99,30 @@ def checkUser(_name, _id):
     saveFile()
     print("발견 실패")
     return False, None
-
-def delete():
-    ws.delete_rows(2,ws.max_row)
-    wb.save("userDB.xlsx")
             
+def Signup(_name, _id):
+    print("user.py의 signup 실행중")
+    loadFile()
+    _row = checkFirstRow()
+    print("가장 처음으로 빈 행 : ", _row)
+    print("신규 데이터를 생성합니다.")
+    
+    print("유저 id | ", ws.cell(_row,u_id).value)
+    ws.cell( row = _row, column = u_id, value = hex(_id))
+    print("유저 이름 | ",  ws.cell( _row, u_name ).value)
+    ws.cell( row = _row, column = u_name, value = _name)
+
+    print("유저 초기 크레딧 | ",  ws.cell( _row, u_credit ).value)
+    ws.cell( row = _row, column = u_credit, value = default_credit)
+    
+    
+
+    
+
+    saveFile()
+
+    print("신규 데이터 생성 완료!")
+
 def signup(_name, _id):
     _row = checkRow()
     

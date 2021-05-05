@@ -39,6 +39,13 @@ default_tax = 0
 wb = load_workbook("userDB.xlsx")
 ws = wb.active
 
+def loadFile():
+    wb = load_workbook("userDB.xlsx")
+    ws = wb.active
+def saveFile():
+    wb.save("userDB.xlsx")
+    wb.close()
+
 def checkRow():
     for row in range(2, ws.max_row + 1):
         if ws.cell(row,1).value is None:

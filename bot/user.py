@@ -39,6 +39,12 @@ default_tax = 0
 wb = load_workbook("userDB.xlsx")
 ws = wb.active
 
+def checkRow():
+    for row in range(2, ws.max_row + 1):
+        if ws.cell(row,1).value is None:
+            return row
+            break
+
 def signup(_name, _id):
     ws.cell(row=2, column=u_id, value=_name)
     ws.cell(row=2, column=u_name, value =_id)

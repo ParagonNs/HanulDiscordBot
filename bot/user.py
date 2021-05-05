@@ -45,16 +45,33 @@ def checkRow():
             return row
             break
 
+def checkName(_name, _id):
+    for row in range(2, ws.max_row+1):
+        if ws.cell(row,1).value == _name and ws.cell(row,2).value == _id:
+            break
+            return false
+        else:
+            return true
+            break
+            
 def signup(_name, _id):
     _row = checkRow()
     
     ws.cell(_row, column = u_id, value = _name)
     ws.cell(_row, column = u_name, value = _id)
     ws.cell(_row, column = u_credit, value = default_credit)
-    ws.cell(_row, column = u_level, value = defailt_level)
+    ws.cell(_row, column = u_level, value = defalt_level)
     ws.cell(_row, column = u_aresource, value = default_aresource)
     ws.cell(_row, column = u_bresource, value = default_bresource)
     ws.cell(_row, column = u_cresource, value = default_cresource)
     ws.cell(_row, column = u_dresource, value = default_dresource)
-
+    ws.cell(_row, column = u_levelmining, value = defalt_levelmining)
+    ws.cell(_row, column = u_miningcountupgrade, value = default_miningcountupgrade)
+    ws.cell(_row, column = u_miningamountupgrade, value = default_miningamountupgrade)
+    ws.cell(_row, column = u_miningluckupgrade, value = default_miningluckupgrade)
+    ws.cell(_row, column = u_bankcredit, value = default_bankcredit)
+    ws.cell(_row, column = u_bankrank, value = default_bankrank)
+    ws.cell(_row, column = u_userbanktax, value = default_banktax)
+    ws.cell(_row, column = u_usertax, value = default_tax)
+    
     wb.save("userDB.xlsx")

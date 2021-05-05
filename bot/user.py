@@ -46,9 +46,15 @@ def checkRow():
             break
 
 def signup(_name, _id):
-    ws.cell(row=2, column=u_id, value=_name)
-    ws.cell(row=2, column=u_name, value =_id)
-    ws.cell(row=2, column=u_credit, value = default_credit)
-    ws.cell(row=2, column=u_level, value = defailt_level)
+    _row = checkRow()
+    
+    ws.cell(_row, column = u_id, value = _name)
+    ws.cell(_row, column = u_name, value = _id)
+    ws.cell(_row, column = u_credit, value = default_credit)
+    ws.cell(_row, column = u_level, value = defailt_level)
+    ws.cell(_row, column = u_aresource, value = default_aresource)
+    ws.cell(_row, column = u_bresource, value = default_bresource)
+    ws.cell(_row, column = u_cresource, value = default_cresource)
+    ws.cell(_row, column = u_dresource, value = default_dresource)
 
     wb.save("userDB.xlsx")

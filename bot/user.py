@@ -13,6 +13,9 @@ u_cresource = 7#유저가 가진 자원 C
 u_dresource = 8#유저가 가진 자원 D
 u_levelmining = 9 #유저의 채굴 레벨
 u_miningcountupgrade = 10 #채굴 횟수 업그레이드
+u_miningamountupgrade = 11 #채굴량 업그레이드
+u_miningluckupgrade = 12 #행운( 채굴 ) 업그레이드
+
 #Default Data
 default_credit = 100
 default_level = 1

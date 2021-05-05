@@ -53,6 +53,10 @@ def checkName(_name, _id):
         else:
             return true
             break
+
+def delete():
+    ws.delete_rows(2,ws.max_row)
+    wb.save("userDB.xlsx")
             
 def signup(_name, _id):
     _row = checkRow()

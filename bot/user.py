@@ -1,4 +1,6 @@
 #user.py
+#code base ( richardlee-kr 's SuperBot )
+#https://github.com/richardlee-kr/SuperBot
 
 from openpyxl import load_workbook, Workbook
 
@@ -67,20 +69,32 @@ def checkFirstRow():
     _result = ws.max_row+1
     saveFile()
     return _result
-def checkRow():
-    for row in range(2, ws.max_row + 1):
-        if ws.cell(row,1).value is None:
-            return row
+def checkUser(_name, _id):
+    print("user.py의 checkUser 실핼중")
+    print(str(_name) + "<" + str(_id) + ">의 존재 여부 확인")
+    loadFile()
+    userNum = checkUserNum()
+    print("등록된 유저수: ", userNum)
+    print("이름과 고유번호 탐색")
+    print("")
+    for row in range(2, 3+userNum):
+        print(row, "번째 줄 name: ", ws.cell(row,c_name).value)
+        print("입력된 name: ", _name)
+        print("이름과 일치 여부: ", ws.cell(row, c_name).value == _name)
+        print(row,"번째 줄 id: ", ws.cell(row,c_id).value)
+        print("입력된 id: ", hex(_id))
+        print("고유번호정보와 일치 여부: ", ws.cell(row, c_id).value == hex(_id))
+        if ws.cell(row, c_name).value == _name and ws.cell(row,c_id).value == hex(_id):
+            print("등록된  이름과 고유번호를 발견")
+            print("등록된  값의 위치: ",  row, "번째 줄")
+            saveFile()
+            return True, row
             break
-
-def checkName(_name, _id):
-    for row in range(2, ws.max_row+1):
-        if ws.cell(row,1).value == _name and ws.cell(row,2).value == _id:
-            break
-            return false
         else:
-            return true
-            break
+            print("등록된 정보를 탐색 실패, 재탐색 실시")
+    saveFile()
+    print("발견 실패")
+    return False, None
 
 def delete():
     ws.delete_rows(2,ws.max_row)

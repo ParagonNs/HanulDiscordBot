@@ -24,6 +24,10 @@ async def 회원가입(ctx):
 	signup(ctx.author.name, ctx.author.id)
 
 @bot.command()
+async def 초기화(ctx):
+    delete()
+	
+@bot.command()
 async def 주사위(ctx):
     a = random.randrange(1,7)
     embed = discord.Embed(title = "주사위 굴리기 결과", description = None, color = 0xFAFA00)

@@ -19,6 +19,10 @@ u_miningluckupgrade = 12 #행운( 채굴 ) 업그레이드
 #Default Data
 default_credit = 100
 default_level = 1
+default_aresource = 0
+default_bresource = 0
+default_cresource = 0
+default_dresource = 0
 
 wb = load_workbook("userDB.xlsx")
 ws = wb.active

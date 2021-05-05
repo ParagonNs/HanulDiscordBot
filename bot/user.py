@@ -15,6 +15,10 @@ u_levelmining = 9 #유저의 채굴 레벨
 u_miningcountupgrade = 10 #채굴 횟수 업그레이드
 u_miningamountupgrade = 11 #채굴량 업그레이드
 u_miningluckupgrade = 12 #행운( 채굴 ) 업그레이드
+u_bankcredit = 13 #은행에 보관된 유저의 크레딧
+u_bankrank = 14 #유저의 은행 등급
+u_userbanktax = 15 #유저가 은행에 지불한 모든 수수료의 총합
+u_usertax = 16 #유저가 지불한 모든 세금의 총합
 
 #Default Data
 default_credit = 100

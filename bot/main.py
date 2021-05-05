@@ -2,6 +2,7 @@
 #main
 
 import asyncio, discord
+from user.py import *
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix="&")
@@ -17,6 +18,10 @@ async def 핑(ctx):
 @bot.command()
 async def 도움말(ctx):
     await ctx.send("도움말")
+
+@bot.command()
+async def 회원가입(ctx):
+	signup(ctx.author.name, ctx.author.id)
 
 @bot.command()
 async def 주사위(ctx):

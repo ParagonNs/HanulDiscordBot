@@ -37,15 +37,36 @@ default_banktax = 0
 default_tax = 0
 
 wb = load_workbook("userDB.xlsx")
-ws = wb.active
+ws = wb.create_sheet("User Data", 0 )
 
 def loadFile():
+    print("엑셀 파일을 불러옵니다.")
     wb = load_workbook("userDB.xlsx")
-    ws = wb.active
+    ws = wb.create_sheet("User Data", 0 )
 def saveFile():
+    print("엑셀 파일을 저장합니다.")
     wb.save("userDB.xlsx")
     wb.close()
-
+def checkUserNum():
+    print("user.py의 checkUserNum 실행중")
+    loadFile()
+    count = 0
+    for row in range(2, ws.max_row+1):
+        if ws.cell(row,c_name).value != None:
+            count = count+1
+        else:
+            count = count
+    return count
+def checkFirstRow():
+    print("user.py의 checkFirstRow 실행중")
+    loadFile()
+    for row in range(2, ws.max_row + 1):
+        if ws.cell(row,1).value is None:
+            return row
+            break
+    _result = ws.max_row+1
+    saveFile()
+    return _result
 def checkRow():
     for row in range(2, ws.max_row + 1):
         if ws.cell(row,1).value is None:

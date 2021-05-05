@@ -27,6 +27,14 @@ default_aresource = 0
 default_bresource = 0
 default_cresource = 0
 default_dresource = 0
+default_levelmining = 1
+default_miningcountupgrade = 0
+default_miningamountupgrade = 0
+default_miningluckupgrade = 0
+default_bankcredit = 500
+default_bankrank = 1
+default_banktax = 0
+default_tax = 0
 
 wb = load_workbook("userDB.xlsx")
 ws = wb.active

@@ -4,7 +4,7 @@
 
 from openpyxl import load_workbook, Workbook
 
-wb = load_workbook("userDB.xlsx")
+wb = load_workbook("userDB.xlsx", data_only = True)
 ws = wb.create_sheet("User Data", 0 )
 
 def loadFile():

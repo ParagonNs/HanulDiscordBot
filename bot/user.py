@@ -5,12 +5,13 @@
 from openpyxl import load_workbook, Workbook
 
 wb = load_workbook("BotDB.xlsx", data_only = True)
-ws = wb.create_sheet("User Data", 0 )
+wus = wb.create_sheet("User Data", 0 )
+wns = wb.create_sheet("Country Data", 1 )
 
 def loadFile():
     print("엑셀 파일을 불러옵니다.")
     wb = load_workbook("BotDB.xlsx")
-    ws = wb.create_sheet("User Data", 0 )
+    wus = wb.create_sheet("User Data", 0 )
     
 def saveFile():
     print("엑셀 파일을 저장합니다.")
@@ -22,7 +23,7 @@ def checkUserNum():
     loadFile()
     count = 0
     for row in range(2, ws.max_row+1):
-        if ws.cell(row,c_name).value != None:
+        if wus.cell(row,c_name).value != None:
             count = count+1
         else:
             count = count
@@ -31,11 +32,11 @@ def checkUserNum():
 def checkFirstRow():
     print("user.py의 checkFirstRow 실행중")
     loadFile()
-    for row in range(2, ws.max_row + 1):
-        if ws.cell(row,1).value is None:
+    for row in range(2, wus.max_row + 1):
+        if wus.cell(row,1).value is None:
             return row
             break
-    _result = ws.max_row+1
+    _result = wus.max_row+1
     saveFile()
     return _result
 
@@ -48,13 +49,13 @@ def checkUser(_name, _id):
     print("이름과 고유번호 탐색")
     print("")
     for row in range(2, 3+userNum):
-        print(row, "번째 줄 name: ", ws.cell(row,c_name).value)
+        print(row, "번째 줄 name: ", wus.cell(row,c_name).value)
         print("입력된 name: ", _name)
-        print("이름과 일치 여부: ", ws.cell(row, c_name).value == _name)
-        print(row,"번째 줄 id: ", ws.cell(row,c_id).value)
+        print("이름과 일치 여부: ", wus.cell(row, c_name).value == _name)
+        print(row,"번째 줄 id: ", wus.cell(row,c_id).value)
         print("입력된 id: ", hex(_id))
-        print("고유번호정보와 일치 여부: ", ws.cell(row, c_id).value == hex(_id))
-        if ws.cell(row, c_name).value == _name and ws.cell(row,c_id).value == hex(_id):
+        print("고유번호정보와 일치 여부: ", wus.cell(row, c_id).value == hex(_id))
+        if wus.cell(row, c_name).value == _name and wus.cell(row,c_id).value == hex(_id):
             print("등록된  이름과 고유번호를 발견")
             print("등록된  값의 위치: ",  row, "번째 줄")
             saveFile()
@@ -80,7 +81,7 @@ def Signup(_name, _id):
     #은행에 보관된 유저의 크레딧, 유저의 은행 등급, 유저가 은행에 지불한 모든 수수료의 총합, 유저가 지불한 모든 세금의 총합
     
     for i in range( 0, len( User_data_list )):
-        ws.cell( _row, column = i + 1, value = User_data_list[i])
+        wus.cell( _row, column = i + 1, value = User_data_list[i])
 
     saveFile()
 

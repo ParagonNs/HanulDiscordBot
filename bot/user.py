@@ -4,17 +4,17 @@
 
 from openpyxl import load_workbook, Workbook
 
-wb = load_workbook("userDB.xlsx", data_only = True)
+wb = load_workbook("BotDB.xlsx", data_only = True)
 ws = wb.create_sheet("User Data", 0 )
 
 def loadFile():
     print("엑셀 파일을 불러옵니다.")
-    wb = load_workbook("userDB.xlsx")
+    wb = load_workbook("BotDB.xlsx")
     ws = wb.create_sheet("User Data", 0 )
     
 def saveFile():
     print("엑셀 파일을 저장합니다.")
-    wb.save("userDB.xlsx")
+    wb.save("BotDB.xlsx")
     wb.close()
     
 def checkUserNum():

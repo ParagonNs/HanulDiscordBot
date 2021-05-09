@@ -22,8 +22,8 @@ def checkUserNum():
     print("user.py의 checkUserNum 실행중")
     loadFile()
     count = 0
-    for row in range(2, ws.max_row+1):
-        if wus.cell(row,c_name).value != None:
+    for row in range(2, wus.max_row+1):
+        if wus.cell(row,User_data_list[1]).value != None:
             count = count+1
         else:
             count = count
@@ -49,14 +49,14 @@ def checkUser(_name, _id):
     print("이름과 고유번호 탐색")
     print("")
     for row in range(2, 3+userNum):
-        print(row, "번째 줄 name: ", wus.cell(row,c_name).value)
+        print(row, "번째 줄 name: ", wus.cell(row,User_data_list[1]).value)
         print("입력된 name: ", _name)
-        print("이름과 일치 여부: ", wus.cell(row, c_name).value == _name)
-        print(row,"번째 줄 id: ", wus.cell(row,c_id).value)
+        print("이름과 일치 여부: ", wus.cell(row, User_data_list[1]).value == _name)
+        print(row,"번째 줄 id: ", wus.cell(row, User_data_list[0]).value)
         print("입력된 id: ", hex(_id))
-        print("고유번호정보와 일치 여부: ", wus.cell(row, c_id).value == hex(_id))
-        if wus.cell(row, c_name).value == _name and wus.cell(row,c_id).value == hex(_id):
-            print("등록된  이름과 고유번호를 발견")
+        print("유저 고유 번호 와 일치 여부: ", wus.cell(row, User_data_list[0]).value == hex(_id))
+        if wus.cell(row, User_data_list[1]).value == _name and wus.cell(row, User_data_list[0]).value == hex(_id):
+            print("등록된  이름과 유저 고유 번호를 발견")
             print("등록된  값의 위치: ",  row, "번째 줄")
             saveFile()
             return True, row

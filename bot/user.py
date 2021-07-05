@@ -9,64 +9,17 @@ WB_Sheet_userDB = Workbook_DB.create_sheet("User Data", 0 )
 WB_Sheet_CountryDB = Workbook_DB.create_sheet("Country Data", 1 )
 
 def Load_file():
+    print("user.py의 Load_file 실행중")
     print("엑셀 파일을 불러옵니다.")
     Workbook_DB = load_workbook("BotDB.xlsx", data_only = True)
     WB_Sheet_userDB = Workbook_DB.create_sheet("User Data", 0 )
     WB_Sheet_CountryDB = Workbook_DB.create_sheet("Country Data", 1 )
     
 def Save_file():
+    print("user.py의 Save_file 실행중")
     print("엑셀 파일을 저장합니다.")
     Workbook_DB.save("BotDB.xlsx")
     Workbook_DB.close()
-    
-def checkUserNum():
-    print("user.py의 checkUserNum 실행중")
-    loadFile()
-    count = 0
-    for row in range(2, wus.max_row+1):
-        if wus.cell(row,User_data_list[1]).value != None:
-            count = count+1
-        else:
-            count = count
-    return count
-
-def checkFirstRow():
-    print("user.py의 checkFirstRow 실행중")
-    loadFile()
-    for row in range(2, wus.max_row + 1):
-        if wus.cell(row,1).value is None:
-            return row
-            break
-    _result = wus.max_row+1
-    saveFile()
-    return _result
-
-def checkUser(_name, _id):
-    print("user.py의 checkUser 실핼중")
-    print(str(_name) + "<" + str(_id) + ">의 존재 여부 확인")
-    loadFile()
-    userNum = checkUserNum()
-    print("등록된 유저수: ", userNum)
-    print("이름과 고유번호 탐색")
-    print("")
-    for row in range(2, 3+userNum):
-        print(row, "번째 줄 name: ", wus.cell(row,User_data_list[1]).value)
-        print("입력된 name: ", _name)
-        print("이름과 일치 여부: ", wus.cell(row, User_data_list[1]).value == _name)
-        print(row,"번째 줄 id: ", wus.cell(row, User_data_list[0]).value)
-        print("입력된 id: ", hex(_id))
-        print("유저 고유 번호 와 일치 여부: ", wus.cell(row, User_data_list[0]).value == hex(_id))
-        if wus.cell(row, User_data_list[1]).value == _name and wus.cell(row, User_data_list[0]).value == hex(_id):
-            print("등록된  이름과 유저 고유 번호를 발견")
-            print("등록된  값의 위치: ",  row, "번째 줄")
-            saveFile()
-            return True, row
-            break
-        else:
-            print("등록된 정보를 탐색 실패, 재탐색 실시")
-    saveFile()
-    print("발견 실패")
-    return False, None
            
 def Check_user_num():
     print("user.py의 Check_user_num 실행중")
@@ -104,11 +57,18 @@ def Check_user( _name, _id ):
     print("유저 {0}<{1}>을/를 발견하지 못했습니다.".format( _name, hex(_id)))
     return False, None
     
+def Last_row_count():
+    print("user.py의 Last_row_count 실행중")
+    for _i in range(2, WB_Sheet_userDB.max_row + 1):
+        if WB_Sheet_userDB.cell( _i, 1 ).value is None:
+            print("가장 처음으로 발견된 빈 행은 {{0}}행입니다.".format( _i ))
+            return _i
+            break
+    
 def Signup( _name, _id ):
     print("user.py의 Signup 실행중")
     Load_file()
     _row = Last_row_count()
-    print("가장 처음으로 발견된 빈 행은 {{0}}행입니다.".format(_row))
     print("{{0}}행에 신규 유저 정보를 생성합니다.".format(_row))
     
     #Data list

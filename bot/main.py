@@ -6,42 +6,30 @@ from user.py import *
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix="&")
+bot_token = open("token.txt", "r").readline()
+
+bot_language = "한국어"
 
 @bot.event
 async def on_ready():
-	print("We have loggedd in as {0.user}".format(bot))
-
-@bot.command()
-async def 핑(ctx):
-    await ctx.send("퐁")
+	print("봇 {0}이 실행되었습니다.".format(bot))
 
 @bot.command()
 async def 도움말(ctx):
     await ctx.send("도움말")
 
-@bot.command()
-async def 회원가입(ctx):
-    if checkName(ctx.author.name, ctx.author.id):
-        signup(ctx.author.name, ctx.author.id)
-        await ctx.send("회원가입이 완료되었습니다.")
-    else:
-        await ctx.send("이미 가입하셨습니다.")
-
-@bot.command()
-async def 초기화(ctx):
-    delete()
-	
-@bot.command()
-async def 주사위(ctx):
-    a = random.randrange(1,7)
-    embed = discord.Embed(title = "주사위 굴리기 결과", description = None, color = 0xFAFA00)
-    embed.add_field(ctx.author.name+"의 숫자", ":game_die: " + str(a), inline = True)
-    embed.set_footer("주사위 결과: " + str(a))
-    await ctx.send(embed=embed)
-
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
-    	await ctx.send("없거나 잘못된 명령어입니다.")
-
-bot.run('token')
+    	await ctx.send("없거나 잘못된 명령어입니다. 봇의 명령어는 ( &도움말 )을 사용해서 확인할 수 있습니다.")
+	
+@bot.command()
+async def 회원가입(ctx):
+    if Check_user(ctx.author.name, ctx.author.id):
+	await ctx.send("{0}님은 이미 가입되었습니다.".format(ctx.author.name))
+    else:
+	Signup(ctx.author.name, ctx.author.id)
+	await ctx.send("{0}님의 회원 가입이 완료되었습니다.".format(ctx.author.name))
+	
+bot.run(bot_token)
+print("봇이 성공적으로 실행되었습니다!")

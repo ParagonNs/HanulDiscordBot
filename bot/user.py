@@ -82,3 +82,22 @@ def Signup( _name, _id ):
     
     Save_file()
     print("신규 유저 {{0}}님의 정보 생성이 완료되었습니다.".format(_name))
+    
+def Low_user_data( _name, _id ):
+    print("user.py의 Low_user_data 실행중")
+    #작성중
+    if Check_user( _name, _id )
+    
+        for _i in range( 2, WB_Sheet_userDB.max_row + 2 ):
+            if WB_Sheet_userDB.cell( _i, 1 ).value == _name and WB_Sheet_userDB.cell( _i, 2 ).value == _id:
+                return WB_Sheet_userDB.cell( _i, 1 ).value, WB_Sheet_userDB.cell( _i, 2 ).value
+    else:
+        return None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None
+    
+	if not checkName(_namd, _id):
+    	for row in range(2, ws.max_row+2):
+    		if ws.cell(row, 1).value == _name and ws.cell(row, 2).value == _id:
+        		return ws.cell(row,1).value, ws.cell(row,c_lvl).value
+                break
+    else:
+    	return None, None

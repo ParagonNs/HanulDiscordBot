@@ -2,7 +2,7 @@
 #main
 
 import asyncio, discord
-from user.py import *
+from Excel.py import *
 from discord.ext import commands
 
 bot = commands.Bot( command_prefix = "&" )
@@ -10,6 +10,7 @@ bot_token = open( "token.txt", "r" ).readline()
 color_list = [ 0x62D0F6 ]
 
 bot_language = "한국어"
+myinfo_text_list = []
 
 @bot.event
 async def on_ready():
@@ -35,9 +36,9 @@ async def 회원가입( ctx ):
 @bot.command()
 async def 내정보( ctx ):
     if Check_user( ctx.author.name, ctx.author.id ):
-	_id, _name, _credit, _mainlv, _resource_a, _resource_b, _resource_c, _resource_d, _mininglv, _mining_countlv, _mining_lucklv, _credit_bank, _banklv, _banktax, _usertax = Low_user_data( ctx.author.name, ctx.author.id );
+	_low_user_data_list = Low_user_data( ctx.author.name, ctx.author.id );
 	emebed = discord.Embed( title = "사업자등록증", description = ctx.author.name, color = color_list[0] )
-	embed.add_field( name = "등급", value = _mainlv, inline = True )
+	embed.add_field( name = "등급", value = _low_user_data_list[3], inline = True )
 	embed.add_field( name = "은행 신용 등급", value = _banklv, inline = True )
 	embed.add_field( name = "보유 자산", value = _credit, inline = True )
 	embed.add_field( name = "은행 위탁 자산", value = _credit_bank, inline = True )

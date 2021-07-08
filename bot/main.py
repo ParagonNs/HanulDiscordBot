@@ -1,6 +1,7 @@
 # -*_ coding: utf-8 -*-
 #main
 
+
 import asyncio, discord
 from Excel.py import *
 from discord.ext import commands
@@ -37,9 +38,9 @@ async def 회원가입( ctx ):
 async def 회원탈퇴( ctx ):
     if Check_user( ctx.author.name, ctx.author.id ):
 	_ask_msg = await ctx.send( "{0}님 탈퇴하시겠습니까? 동의하신다면 ⭕, 아니라면 ❌를 눌러주세요.".format(ctx.author.name))
-        await conference_msg.add_reaction("⭕")
+        await _ask_msg.add_reaction("⭕")
 	    #회원 탈퇴 진행
-        await conference_msg.add_reaction("❌")
+        await _ask_msg.add_reaction("❌")
 	    #회원 탈퇴 취소
     else:
 	await ctx.send( "{0}님의 계정이 없습니다.".format(ctx.author.name))

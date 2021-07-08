@@ -1,4 +1,4 @@
-#user.py
+#Excel.py
 #code base ( richardlee-kr 's SuperBot )
 #https://github.com/richardlee-kr/SuperBot
 
@@ -9,20 +9,20 @@ WB_Sheet_userDB = Workbook_DB.create_sheet("User Data", 0 )
 WB_Sheet_CountryDB = Workbook_DB.create_sheet("Country Data", 1 )
 
 def Load_file():
-    print("user.py의 Load_file 실행중")
+    print("Excel.py의 Load_file 실행중")
     print("엑셀 파일을 불러옵니다.")
     Workbook_DB = load_workbook("BotDB.xlsx", data_only = True)
     WB_Sheet_userDB = Workbook_DB.create_sheet("User Data", 0 )
     WB_Sheet_CountryDB = Workbook_DB.create_sheet("Country Data", 1 )
     
 def Save_file():
-    print("user.py의 Save_file 실행중")
+    print("Excel.py의 Save_file 실행중")
     print("엑셀 파일을 저장합니다.")
     Workbook_DB.save("BotDB.xlsx")
     Workbook_DB.close()
            
 def Check_user_num():
-    print("user.py의 Check_user_num 실행중")
+    print("Excel.py의 Check_user_num 실행중")
     Load_file()
     _user_count = 0
     for _i in range( 2, WB_Sheet_userDB.max_row + 1 ):
@@ -33,7 +33,7 @@ def Check_user_num():
     return _user_count
 
 def Check_user( _name, _id ):
-    print("user.py의 Check_user 실행중")
+    print("Excel.py의 Check_user 실행중")
     Load_file()
     print("유저 {0}<{1}>가 존재하는지 확인합니다.".format( _name, hex(_id)))
     _total_user_num = Check_user_num()
@@ -58,7 +58,7 @@ def Check_user( _name, _id ):
     return False, None
     
 def Last_row_count():
-    print("user.py의 Last_row_count 실행중")
+    print("Excel.py의 Last_row_count 실행중")
     for _i in range(2, WB_Sheet_userDB.max_row + 1):
         if WB_Sheet_userDB.cell( _i, 1 ).value is None:
             print("가장 처음으로 발견된 빈 행은 {{0}}행입니다.".format( _i ))
@@ -66,7 +66,7 @@ def Last_row_count():
             break
     
 def Signup( _name, _id ):
-    print("user.py의 Signup 실행중")
+    print("Excel.py의 Signup 실행중")
     Load_file()
     _row = Last_row_count()
     print("{{0}}행에 신규 유저 정보를 생성합니다.".format(_row))
@@ -84,7 +84,7 @@ def Signup( _name, _id ):
     print("신규 유저 {{0}}님의 정보 생성이 완료되었습니다.".format(_name))
     
 def Low_user_data( _name, _id ):
-    print("user.py의 Low_user_data 실행중")
+    print("Excel.py의 Low_user_data 실행중")
     #작성중
     _checked_name, _checked_at = Check_user( _name, _id )
     if _checked_name

@@ -94,7 +94,9 @@ def Low_user_data( _name, _id ):
 	for _i in range( 0, len( User_data_list )):
 	    _low_user_data += WB_Sheet_userDB.cell( _checked_at, _i ).value
 	Save_file()
+	print("유저 {{}}님의 정보가 성공적으로 추출되었습니다.".format(_name))
         return _low_user_data
     else:
 	Save_file()
+	print("유저 {{}}님의 정보가 추출되지 않았습니다.".format(_name))
 	return None

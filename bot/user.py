@@ -38,7 +38,7 @@ def Check_user( _name, _id ):
     print("유저 {0}<{1}>가 존재하는지 확인합니다.".format( _name, hex(_id)))
     _total_user_num = Check_user_num()
     print("탐색을 시작합니다.")
-    for _i in range(2, 3+userNum):
+    for _i in range(2, 3 + userNum):
         _i_name_value = WB_Sheet_userDB.cell( _i, User_data_list[1] ).value
         _i_id_value = WB_Sheet_userDB.cell( _i, User_data_list[0] ).value
         print("{0}번째 정보 탐색, {0}번째 줄의 이름 : {1}".format(_i, _i_name_value ))
@@ -86,18 +86,12 @@ def Signup( _name, _id ):
 def Low_user_data( _name, _id ):
     print("user.py의 Low_user_data 실행중")
     #작성중
-    if Check_user( _name, _id )
-    
-        for _i in range( 2, WB_Sheet_userDB.max_row + 2 ):
-            if WB_Sheet_userDB.cell( _i, 1 ).value == _name and WB_Sheet_userDB.cell( _i, 2 ).value == _id:
-                return WB_Sheet_userDB.cell( _i, 1 ).value, WB_Sheet_userDB.cell( _i, 2 ).value
+    _checked_name, _checked_at = Check_user( _name, _id )
+    if _checked_name
+	_low_user_data = []
+	for _i in range( 0, 15 ):
+	    _low_user_data += WB_Sheet_userDB.cell( _checked_at, _i ).value
+	
+        return _low_user_data
     else:
-        return None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None
-    
-	if not checkName(_namd, _id):
-    	for row in range(2, ws.max_row+2):
-    		if ws.cell(row, 1).value == _name and ws.cell(row, 2).value == _id:
-        		return ws.cell(row,1).value, ws.cell(row,c_lvl).value
-                break
-    else:
-    	return None, None
+	return None

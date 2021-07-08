@@ -59,10 +59,12 @@ def Check_user( _name, _id ):
     
 def Last_row_count():
     print("Excel.py의 Last_row_count 실행중")
+    Load_file()
     for _i in range(2, WB_Sheet_userDB.max_row + 1):
         if WB_Sheet_userDB.cell( _i, 1 ).value is None:
             print("가장 처음으로 발견된 빈 행은 {{0}}행입니다.".format( _i ))
-            return _i
+            Save_file()
+	    return _i
             break
     
 def Signup( _name, _id ):
@@ -85,13 +87,14 @@ def Signup( _name, _id ):
     
 def Low_user_data( _name, _id ):
     print("Excel.py의 Low_user_data 실행중")
-    #작성중
+    Load_file()
     _checked_name, _checked_at = Check_user( _name, _id )
     if _checked_name
 	_low_user_data = []
-	for _i in range( 0, 15 ):
+	for _i in range( 0, len( User_data_list )):
 	    _low_user_data += WB_Sheet_userDB.cell( _checked_at, _i ).value
-	
+	Save_file()
         return _low_user_data
     else:
+	Save_file()
 	return None

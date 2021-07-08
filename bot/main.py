@@ -32,6 +32,17 @@ async def 회원가입( ctx ):
     else:
 	Signup( ctx.author.name, ctx.author.id )
 	await ctx.send( "{0}님의 회원 가입이 완료되었습니다.".format(ctx.author.name))
+
+@bot.command()
+async def 회원탈퇴( ctx ):
+    if Check_user( ctx.author.name, ctx.author.id ):
+	_ask_msg = await ctx.send( "{0}님 탈퇴하시겠습니까? 동의하신다면 ⭕, 아니라면 ❌를 눌러주세요.".format(ctx.author.name))
+        await conference_msg.add_reaction("⭕")
+	    #회원 탈퇴 진행
+        await conference_msg.add_reaction("❌")
+	    #회원 탈퇴 취소
+    else:
+	await ctx.send( "{0}님의 계정이 없습니다.".format(ctx.author.name))
 	
 @bot.command()
 async def 내정보( ctx ):
@@ -55,6 +66,6 @@ async def 내정보( ctx ):
 	await ctx.send( embed = embed )
     else:
 	await ctx.send( "{0}님은 회원 가입이 완료되지 않았습니다.".format(ctx.author.name))
-	
+
 bot.run(bot_token)
 print("봇이 성공적으로 실행되었습니다!")

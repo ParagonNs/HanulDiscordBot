@@ -75,9 +75,11 @@ def Signup( _name, _id ):
     
     #Data list
     User_data_list[ hex(_id), _name, 100, 1, 0, 0, 0, 0, 1, 0, 0, 0, 500, 1, 0, 0 ]
-    #id, name, credit, 유저의 레벨( 메인 ), 유저가 가진 자원 A, 유저가 가진 자원 B
-    #유저가 가진 자원 C, 유저가 가진 자원 D, 유저의 채굴 레벨, 채굴 횟수 업그레이드, 채굴량 업그레이드, 행운( 채굴 ) 업그레이드
-    #은행에 보관된 유저의 크레딧, 유저의 은행 등급, 유저가 은행에 지불한 모든 수수료의 총합, 유저가 지불한 모든 세금의 총합
+    #id_0, name_1, credit_2, user main lv_3
+    #resource A_4, resource B_5, resource C_6
+    #resource D_7, user mining lv_8, user mining count lv_9
+    #user mining amount lv_10, user mining luck lv_11, vault credit_12
+    #user bank lv_13, total bank tax_14, total tax_15
     
     for _i in range( 0, len( User_data_list )):
         WB_Sheet_userDB.cell( _row, column = _i + 1, value = User_data_list[_i])

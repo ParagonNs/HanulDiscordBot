@@ -16,6 +16,7 @@ myinfo_text_list = []
 @bot.event
 async def on_ready():
 	print( "봇 {0}이 실행되었습니다.".format( bot ))
+	await client.change_presence(status = discord.Status.online, activity=discord.Game("문의는 Paragon에게 해주세요."))
 
 @bot.command()
 async def 도움말( ctx ):

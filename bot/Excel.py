@@ -1,6 +1,4 @@
 #Excel.py
-#code base ( richardlee-kr 's SuperBot )
-#https://github.com/richardlee-kr/SuperBot
 
 from openpyxl import load_workbook, Workbook
 
